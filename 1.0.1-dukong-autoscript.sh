@@ -143,7 +143,7 @@ source $HOME/.bash_profile
 echo $(go version) && sleep 1
 
 # Download Prysm protocol binary
-printGreen "3. Downloading Prysm binary and setting up..." && sleep 1
+printGreen "3. Downloading Mantra Dukong binary and setting up..." && sleep 1
 wget -O mantrachaind https://github.com/MANTRA-Chain/mantrachain/releases/download/v1.0.1/mantrachaind-1.0.1-linux-amd64
 chmod +x mantrachaind
 mkdir -p $HOME/.mantrachain/cosmovisor/genesis/bin

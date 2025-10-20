@@ -144,16 +144,19 @@ echo $(go version) && sleep 1
 
 # Download Prysm protocol binary
 printGreen "3. Downloading Mantra Dukong binary and setting up..." && sleep 1
-wget -O mantrachaind https://github.com/MANTRA-Chain/mantrachain/releases/download/v1.0.1/mantrachaind-1.0.1-linux-amd64
-chmod +x mantrachaind
-mkdir -p $HOME/.mantrachain/cosmovisor/genesis/bin
-mv $HOME/mantrachaind $HOME/.mantrachain/cosmovisor/genesis/bin
-sudo ln -sf $HOME/.mantrachain/cosmovisor/genesis $HOME/.mantrachain/cosmovisor/current -f
-sudo ln -sf $HOME/.mantrachain/cosmovisor/current/bin/mantrachaind /usr/local/bin/mantrachaind -f
 
+cd $HOME
+mkdir -p $HOME/.mantrachain/cosmovisor/upgrades/v6.0.0-rc0/bin
+
+wget -O /tmp/mantrachaind.tar.gz https://github.com/MANTRA-Chain/mantrachain/releases/download/v6.0.0-rc0/mantrachaind-6.0.0-rc0-linux-amd64.tar.gz
+
+tar -xzf /tmp/mantrachaind.tar.gz -C $HOME/.mantrachain/cosmovisor/upgrades/v6.0.0-rc0/bin/
+chmod +x $HOME/.mantrachain/cosmovisor/upgrades/v6.0.0-rc0/bin/mantrachaind
+
+sudo ln -sfn $HOME/.mantrachain/cosmovisor/upgrades/v6.0.0-rc0 $HOME/.mantrachain/cosmovisor/current
 # Create service file
 printGreen "6. Creating service file..." && sleep 1
-sudo tee /etc/systemd/system/mantrachaind.service > /dev/null << EOF
+sudo bash -c "cat > /etc/systemd/system/mantrachaind.service" << EOF
 [Unit]
 Description=mantrachain node service
 After=network-online.target

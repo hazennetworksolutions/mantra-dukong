@@ -69,7 +69,7 @@ function printNodeLogo {
 ████████████████████████████████████████████████████████████████████████████████████████████████████
 ████████████████████████████████████████████████████████████████████████████████████████████████████
 ████████████████████████████████████████████████████████████████████████████████████████████████████
-Hazen Network Solutions 2024 All rights reserved."
+Hazen Network Solutions 2025 All rights reserved."
     echo -e "\033[0m"
 }
 
@@ -77,7 +77,7 @@ Hazen Network Solutions 2024 All rights reserved."
 printNodeLogo
 
 # User confirmation to proceed
-echo -n "Type 'yes' to start the installation Mantra Dukong v1.0.1 and press Enter: "
+echo -n "Type 'yes' to start the installation Mantra Dukong v6.0.0-rc0 and press Enter: "
 read user_input
 
 if [[ "$user_input" != "yes" ]]; then
